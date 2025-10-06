@@ -7,6 +7,7 @@ package lab05_kourosh;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -40,10 +41,14 @@ public class Lab05_kourosh extends Application{
         //creating root border pane
         BorderPane root = new BorderPane();
         
-        //creating labels
-        Label bagStyleLbl = new Label("Select Bag Style");
-        Label quantityLabel = new Label("Select Quantity:");
         
+        //creating labels
+        Label bagStyleLbl = new Label("Select Bag Style: ");
+        Label quantityLabel = new Label("Select Quantity: ");
+        Label sizeLabel =  new Label("Select Size: ");
+        
+        //creating grid pane
+        GridPane grid = new GridPane();
         
         String[] bags = {"Full Decorative", "Beaded", "Pirate Design", "Fringed", "Leather", "Plain"};
         ListView<String> listView = new ListView<>();
@@ -54,6 +59,7 @@ public class Lab05_kourosh extends Application{
         ComboBox<Integer> comboBox = new ComboBox<>();
         comboBox.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
         
+        //creating radio buttons and toggle group
         RadioButton smallRadioButton = new RadioButton("Small");
         RadioButton medRadioButton = new RadioButton("Medium");
         RadioButton largeRadioButton = new RadioButton("Large");
@@ -63,18 +69,31 @@ public class Lab05_kourosh extends Application{
         medRadioButton.setToggleGroup(toggleGroup);
         largeRadioButton.setToggleGroup(toggleGroup);
         
+        VBox vBox = new VBox(smallRadioButton, medRadioButton, largeRadioButton);
+        
+        //adding nodes to grid pane
+        grid.add(quantityLabel, 0, 0);
+        grid.add(comboBox, 1, 0);
+        grid.add(sizeLabel, 0, 1);
+        grid.add(vBox, 1, 1);
+        
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(5);
+        grid.setVgap(5);
         
         
         
         //adding nodes to root
         root.setCenter(listView);
         root.setLeft(bagStyleLbl);
-        root.setRight(vBox);
+        root.setRight(grid);
+        root.setPadding(new Insets(25, 25, 25, 25));
         
         
         
-        //creating grid pane
-        GridPane grid = new GridPane();
+        
+        
+
         
         //setting scene 
         Scene scene = new Scene(root);
