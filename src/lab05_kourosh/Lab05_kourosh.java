@@ -4,17 +4,26 @@
  */
 package lab05_kourosh;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 /**
  *
  * @author 2440557
  */
-public class Lab05_kourosh {
+public class Lab05_kourosh extends Application{
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) {
+        
     }
     
 }
