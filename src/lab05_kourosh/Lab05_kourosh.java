@@ -5,11 +5,13 @@
 package lab05_kourosh;
 
 
+import java.io.ObjectInputStream;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -46,6 +48,7 @@ public class Lab05_kourosh extends Application{
         Label bagStyleLbl = new Label("Select Bag Style: ");
         Label quantityLabel = new Label("Select Quantity: ");
         Label sizeLabel =  new Label("Select Size: ");
+        Label messageLabel = new Label();
         
         //creating grid pane
         GridPane grid = new GridPane();
@@ -53,7 +56,7 @@ public class Lab05_kourosh extends Application{
         String[] bags = {"Full Decorative", "Beaded", "Pirate Design", "Fringed", "Leather", "Plain"};
         ListView<String> listView = new ListView<>();
         listView.setItems(FXCollections.observableArrayList(bags));
-        listView.setPrefSize(300, 300);
+        listView.setPrefSize(300, 170);
         
         //creating combo box
         ComboBox<Integer> comboBox = new ComboBox<>();
@@ -71,11 +74,19 @@ public class Lab05_kourosh extends Application{
         
         VBox vBox = new VBox(smallRadioButton, medRadioButton, largeRadioButton);
         
+        // creating buttons
+        Button orderBtn = new Button("Place Order");
+        Button clearBtn = new Button("clear Button");
+        
+        
+        
         //adding nodes to grid pane
         grid.add(quantityLabel, 0, 0);
         grid.add(comboBox, 1, 0);
         grid.add(sizeLabel, 0, 1);
         grid.add(vBox, 1, 1);
+        grid.add(orderBtn, 0, 3);
+        grid.add(clearBtn, 1, 3);
         
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(5);
@@ -88,6 +99,13 @@ public class Lab05_kourosh extends Application{
         root.setLeft(bagStyleLbl);
         root.setRight(grid);
         root.setPadding(new Insets(25, 25, 25, 25));
+        root.setBottom(messageLabel);
+        
+        BorderPane.setMargin(listView, new Insets(10, 10, 10, 10));
+        BorderPane.setAlignment(bagStyleLbl, Pos.CENTER);
+        BorderPane.setAlignment(messageLabel, Pos.CENTER);
+        
+        
         
         
         
