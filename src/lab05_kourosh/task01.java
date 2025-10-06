@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  *
  * @author 2440557
  */
-public class Lab05_kourosh extends Application {
+public class task01 extends Application {
 
     /**
      * @param args the command line arguments
